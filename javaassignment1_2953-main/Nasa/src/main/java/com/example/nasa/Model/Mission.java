@@ -1,25 +1,27 @@
-package com.example.nasa;
+package com.example.nasa.Model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
+import java.time.LocalDate;
 
 public class Mission {
+    // Properties for Mission details
     private final IntegerProperty sno;
     private final StringProperty missionName;
-    private final StringProperty missionStartDate;
-    private final StringProperty missionEndDate;
+    private final ObjectProperty<LocalDate> missionStartDate;
+    private final ObjectProperty<LocalDate> missionEndDate;
     private final StringProperty missionStatus;
 
-    public Mission(int sno, String missionName, String missionStartDate, String missionEndDate, String missionStatus) {
+    // Constructor to initialize Mission object
+    public Mission(int sno, String missionName, LocalDate missionStartDate, LocalDate missionEndDate, String missionStatus) {
+        // Initialize properties using JavaFX properties
         this.sno = new SimpleIntegerProperty(sno);
         this.missionName = new SimpleStringProperty(missionName);
-        this.missionStartDate = new SimpleStringProperty(missionStartDate);
-        this.missionEndDate = new SimpleStringProperty(missionEndDate);
+        this.missionStartDate = new SimpleObjectProperty<>(missionStartDate);
+        this.missionEndDate = new SimpleObjectProperty<>(missionEndDate);
         this.missionStatus = new SimpleStringProperty(missionStatus);
     }
 
+    // Getter and setter methods for 'sno'
     public int getSno() {
         return sno.get();
     }
@@ -32,6 +34,7 @@ public class Mission {
         this.sno.set(sno);
     }
 
+    // Getter and setter methods for 'missionName'
     public String getMissionName() {
         return missionName.get();
     }
@@ -44,30 +47,33 @@ public class Mission {
         this.missionName.set(missionName);
     }
 
-    public String getMissionStartDate() {
+    // Getter and setter methods for 'missionStartDate'
+    public LocalDate getMissionStartDate() {
         return missionStartDate.get();
     }
 
-    public StringProperty missionStartDateProperty() {
+    public ObjectProperty<LocalDate> missionStartDateProperty() {
         return missionStartDate;
     }
 
-    public void setMissionStartDate(String missionStartDate) {
+    public void setMissionStartDate(LocalDate missionStartDate) {
         this.missionStartDate.set(missionStartDate);
     }
 
-    public String getMissionEndDate() {
+    // Getter and setter methods for 'missionEndDate'
+    public LocalDate getMissionEndDate() {
         return missionEndDate.get();
     }
 
-    public StringProperty missionEndDateProperty() {
+    public ObjectProperty<LocalDate> missionEndDateProperty() {
         return missionEndDate;
     }
 
-    public void setMissionEndDate(String missionEndDate) {
+    public void setMissionEndDate(LocalDate missionEndDate) {
         this.missionEndDate.set(missionEndDate);
     }
 
+    // Getter and setter methods for 'missionStatus'
     public String getMissionStatus() {
         return missionStatus.get();
     }
